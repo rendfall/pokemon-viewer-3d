@@ -8,7 +8,7 @@ So far only `Charizard` is available...
 
 # Known issues
 
-- [ ] Problem with the material of the first rendering
+- [x] Problem with the material of the first rendering
 - [ ] Wrong initial position
 - [ ] Wrong initial rotation
 - [ ] Imprecise lighting

@@ -110,6 +110,12 @@
             };
             var mtlLoader = new THREE.MTLLoader();
 
+            // Refresh model only when material will loaded completely
+            mtlLoader.manager.onLoad = function () {
+                // `control.update` triggers `render` so we don't need call it directly.
+                self.controls.update();
+            };
+
             mtlLoader.setPath(paths.base);
             mtlLoader.load(paths.texture, function (materialCreator) {
                 materialCreator.preload();
@@ -136,9 +142,6 @@
                     // Set OrbiControls target using center point of loaded model.
                     var centerPos = getObjectCenterPosition(pokemon);
                     self.controls.target.set(centerPos.x, centerPos.y, centerPos.z);
-                    self.controls.update();
-
-                    // We don't need render here due to controls update.
                 });
             });
         },
