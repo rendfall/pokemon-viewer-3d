@@ -12,6 +12,7 @@ So far only `Charizard` is available...
 - [ ] Wrong initial position
 - [ ] Wrong initial rotation
 - [ ] Imprecise lighting
+- [ ] Allow to change models dynamically [#bloopers](http://rendfall.pl/bloopers/riders-on-the-storm.webm)
 
 # Resources
 
@@ -19,6 +20,8 @@ So far only `Charizard` is available...
 - http://jeromeetienne.github.io/threejsboilerplatebuilder/
 - https://github.com/Lorti/webgl-3d-model-viewer-using-three.js
 - https://stemkoski.github.io/Three.js/
+
+
 
 # Copyrights and legal notice
 
