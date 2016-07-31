@@ -51,7 +51,7 @@
         },
 
         setupRenderer: function () {
-            var renderer= this.renderer = new THREE.WebGLRenderer();
+            var renderer = this.renderer = new THREE.WebGLRenderer();
             renderer.setPixelRatio(win.devicePixelRatio);
             renderer.setSize(win.width, win.height);
             renderer.setClearColor(new THREE.Color('hsl(0, 0%, 10%)'));
@@ -87,8 +87,8 @@
 
         setupControls: function () {
             var camera = this.camera;
-            var controls = this.controls = new THREE.OrbitControls(camera, domElement);
             var domElement = this.renderer.domElement;
+            var controls = this.controls = new THREE.OrbitControls(camera, domElement);
             var renderHandler = this.render.bind(this);
 
             controls.enableDamping = true;
@@ -122,7 +122,8 @@
                     materials.materials.default.map.minFilter = THREE.LinearFilter;
                 }
 
-                objLoader.setMaterials(materialCreator); self.render();
+
+                objLoader.setMaterials(materialCreator);
                 objLoader.setPath(paths.base);
                 objLoader.load(paths.model, function (model) {
                     var pokemon = self.pokemon = model;
@@ -135,8 +136,9 @@
                     // Set OrbiControls target using center point of loaded model.
                     var centerPos = getObjectCenterPosition(pokemon);
                     self.controls.target.set(centerPos.x, centerPos.y, centerPos.z);
+                    self.controls.update();
 
-                    self.render();
+                    // We don't need render here due to controls update.
                 });
             });
         },
