@@ -94,6 +94,7 @@
             controls.enableDamping = true;
             controls.dampingFactor = 0.25;
             controls.enableZoom = true;
+            controls.enablePan = false;
             controls.minDistance = 20;
             controls.maxDistance = 200;
 
