@@ -1,7 +1,9 @@
-# Pokemon Viewer 3D
+# Pokémon Viewer 3D
+
+> Three-dimensional presentation of Pokémons in `three.js`
 
 Very early version of model viewer with plenty of bugs.
-Many of models needs to revalidate materials and rewrite paths.
+Many of models need to revalidate materials and rewrite paths.
 So far only `Charizard` is available...
 
 # Known issues
@@ -10,6 +12,13 @@ So far only `Charizard` is available...
 - [ ] Wrong initial position
 - [ ] Wrong initial rotation
 - [ ] Imprecise lighting
+
+# Resources
+
+- http://threejs.org/examples/
+- http://jeromeetienne.github.io/threejsboilerplatebuilder/
+- https://github.com/Lorti/webgl-3d-model-viewer-using-three.js
+- https://stemkoski.github.io/Three.js/
 
 # Copyrights and legal notice
 
