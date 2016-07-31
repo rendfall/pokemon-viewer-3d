@@ -124,13 +124,15 @@
                 objLoader.setMaterials(materialCreator); self.render();
                 objLoader.setPath(paths.base);
                 objLoader.load(paths.model, function (model) {
-                    // Hack to force pokemon to look forward.
-                    model.rotation.x = -5;
+                    var pokemon = self.pokemon = model;
 
-                    self.scene.add(model);
+                    // Hack to force pokemon to look forward.
+                    pokemon.rotation.x = -5;
+
+                    self.scene.add(pokemon);
 
                     // Set OrbiControls target using center point of loaded model.
-                    var centerPos = getObjectCenterPosition(model);
+                    var centerPos = getObjectCenterPosition(pokemon);
                     self.controls.target.set(centerPos.x, centerPos.y, centerPos.z);
 
                     self.render();
