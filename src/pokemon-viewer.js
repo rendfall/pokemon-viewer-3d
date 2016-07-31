@@ -102,13 +102,15 @@
 
         loadPokemon: function (name) {
             var self = this;
-            var baseUrl = './src/pokedex/' + name + '/';
-            var modelPath = name + '.obj';
-            var TexturePath = name + '.mtl';
+            var paths = {
+                base: './src/pokedex/' + name + '/',
+                model: name + '.obj',
+                texture: name + '.mtl'
+            };
             var mtlLoader = new THREE.MTLLoader();
 
-            mtlLoader.setPath(baseUrl);
-            mtlLoader.load(TexturePath, function (materialCreator) {
+            mtlLoader.setPath(paths.base);
+            mtlLoader.load(paths.texture, function (materialCreator) {
                 materialCreator.preload();
 
                 var materials = materialCreator.materials;
@@ -120,8 +122,8 @@
                 }
 
                 objLoader.setMaterials(materialCreator); self.render();
-                objLoader.setPath(baseUrl);
-                objLoader.load(modelPath, function (model) {
+                objLoader.setPath(paths.base);
+                objLoader.load(paths.model, function (model) {
                     // Hack to force pokemon to look forward.
                     model.rotation.x = -5;
 
