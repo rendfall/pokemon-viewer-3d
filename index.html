@@ -43,30 +43,34 @@
         window.onload = function () {
             var $picker = document.getElementById('pokemon-picker');
             var pv = new PokemonViewer('scene');
+            var hash = getHash();
 
             function getHash() {
                 return window.location.hash.substr(1).toLowerCase();
             }
 
-            function onChangeHandler() {
-                var idx = this.selectedIndex;
-                var selectedOption = this.options[idx];
-                var name = selectedOption.value;
-
-                loadPokemon(name);
-            }
-
             function loadPokemon(name) {
                 if (!name) { 
-                    name = getHash();
-                    $picker.value = name;
+                    name = $picker.options.item(0).value;
                 }
 
-                pv.loadPokemon(name || 'Charizard');
+                $picker.value = name;
+                pv.loadPokemon(name);
             }
 
-            loadPokemon();
-            $picker.onchange = onChangeHandler;
+            // Load pokemon from hash or first from list.
+            if (hash) {
+                loadPokemon(hash);
+            } else {
+                loadPokemon();
+            }
+
+            $picker.onchange = function onChangeHandler() {
+                var idx = this.selectedIndex;
+                var name = this.options.item(idx).value;
+
+                loadPokemon(name);
+            };
         }
     </script>
 </body>
