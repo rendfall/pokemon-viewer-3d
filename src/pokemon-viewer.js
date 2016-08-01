@@ -4,25 +4,17 @@
     var THREE = root.THREE;
 
     // Window helper for calculations.
-    var win = {
-        width: root.innerWidth,
-        height: root.innerHeight,
-        halfWidth: root.innerWidth / 2,
-        halfHeight: root.innerHeight / 2,
-        aspect: root.innerWidth / root.innerHeight,
-        devicePixelRatio: root.devicePixelRatio
-    }
+    var getWindow = function () {
+        var width = root.innerWidth;
+        var height = root.innerHeight;
 
-    // Initial mouse position is in the middle of screen.
-    var mouseX = win.winHalfW; 
-    var mouseY = win.winHalfH;
-
-    var loop = null;
-
-    function onDocumentMouseMove(e) {
-        mouseX = (e.clientX - win.halfWidth) / 2;
-        mouseY = (e.clientY - win.halfHeight) / 2;
-    }
+        return {
+            width: width,
+            height: height,
+            aspect: (width / height),
+            devicePixelRatio: root.devicePixelRatio
+        }
+    };
 
     function getObjectCenterPosition(obj) {
         var Box = new THREE.Box3().setFromObject(obj);
@@ -32,7 +24,7 @@
     function PokemonViewer(containerID) {
         containerID = containerID || 'scene';
 
-        this.$container = document.getElementById(containerID);
+        this.$container = root.document.getElementById(containerID);
         this.renderer = null;
         this.scene = null;
         this.camera = null;
@@ -48,12 +40,13 @@
             this.setupCamera();
             this.setupControls();
             this.setupLight();
+            this.setupListeners();
         },
 
         setupRenderer: function () {
             var renderer = this.renderer = new THREE.WebGLRenderer();
-            renderer.setPixelRatio(win.devicePixelRatio);
-            renderer.setSize(win.width, win.height);
+            renderer.setPixelRatio(getWindow().devicePixelRatio);
+            renderer.setSize(getWindow().width, getWindow().height);
             renderer.setClearColor(new THREE.Color('hsl(0, 0%, 10%)'));
 
             this.$container.appendChild(renderer.domElement);
@@ -64,7 +57,7 @@
         },
 
         setupCamera: function () {
-            var camera = this.camera = new THREE.PerspectiveCamera(45, win.aspect, 1, 1000);
+            var camera = this.camera = new THREE.PerspectiveCamera(45, getWindow().aspect, 1, 1000);
             camera.position.z = 50;
         },
 
@@ -99,6 +92,17 @@
             controls.maxDistance = 200;
 
             controls.addEventListener('change', renderHandler);
+        },
+
+        setupListeners: function () {
+            var self = this;
+
+            root.addEventListener('resize', function () {
+                self.camera.aspect = getWindow().aspect;
+                self.camera.updateProjectionMatrix();
+                self.renderer.setSize(getWindow().width, getWindow().height);
+                self.render();
+            }, false);
         },
 
         loadPokemon: function (name) {
@@ -150,10 +154,10 @@
             });
         },
 
-        render: function () {
+        render: function () { console.log('render', Date.now());
             this.renderer.render(this.scene, this.camera);
         }
-    }
+    };
 
     // Add `PokemonViewer` to global scope.
     root.PokemonViewer = PokemonViewer;
