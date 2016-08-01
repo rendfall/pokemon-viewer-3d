@@ -18,10 +18,10 @@ Many of models need to revalidate materials and rewrite paths.
 
 - [x] Certificate on the website is untrusted - have to visit [https://threejs.org](https://threejs.org/) and accept it
 - [x] Problem with the material of the first rendering
-- [ ] Wrong initial position
+- [x] Wrong initial position
 - [ ] Wrong initial rotation
 - [ ] Imprecise lighting
-- [ ] Allow to change models dynamically [#bloopers](http://rendfall.pl/bloopers/riders-on-the-storm.webm)
+- [x] Allow to change models dynamically [#bloopers](http://rendfall.pl/bloopers/riders-on-the-storm.webm)
 
 # Resources
 
