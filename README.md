@@ -9,6 +9,7 @@ Many of models need to revalidate materials and rewrite paths.
 
 - [Charizard](https://rendfall.github.io/pokemon-viewer-3d/#Charizard)
 - [Bulbasaur](https://rendfall.github.io/pokemon-viewer-3d/#Bulbasaur)
+- [Rattata](https://rendfall.github.io/pokemon-viewer-3d/#Rattata)
 
 # Known issues
 
