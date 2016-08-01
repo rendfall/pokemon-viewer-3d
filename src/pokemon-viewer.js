@@ -154,7 +154,7 @@
             });
         },
 
-        render: function () { console.log('render', Date.now());
+        render: function () {
             this.renderer.render(this.scene, this.camera);
         }
     };
