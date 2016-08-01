@@ -8,7 +8,7 @@ So far only `Charizard` is available...
 
 # Known issues
 
-- [ ] Certificate on the website is untrusted - have to visit [https://threejs.org](https://threejs.org/) and accept it
+- [x] Certificate on the website is untrusted - have to visit [https://threejs.org](https://threejs.org/) and accept it
 - [x] Problem with the material of the first rendering
 - [ ] Wrong initial position
 - [ ] Wrong initial rotation
