@@ -102,12 +102,18 @@
         },
 
         loadPokemon: function (name) {
+            // Refresh scene.
+            if (this.pokemon) {
+                this.scene.remove(this.pokemon);
+            }
+
             var self = this;
             var paths = {
                 base: './src/pokedex/' + name + '/',
                 model: name + '.obj',
                 texture: name + '.mtl'
             };
+
             var mtlLoader = new THREE.MTLLoader();
 
             // Refresh model only when material will loaded completely
@@ -115,7 +121,6 @@
                 // `control.update` triggers `render` so we don't need call it directly.
                 self.controls.update();
             };
-
             mtlLoader.setPath(paths.base);
             mtlLoader.load(paths.texture, function (materialCreator) {
                 materialCreator.preload();
@@ -127,7 +132,6 @@
                     materials.materials.default.map.magFilter = THREE.NearestFilter;
                     materials.materials.default.map.minFilter = THREE.LinearFilter;
                 }
-
 
                 objLoader.setMaterials(materialCreator);
                 objLoader.setPath(paths.base);
