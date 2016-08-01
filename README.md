@@ -11,6 +11,7 @@ Many of models need to revalidate materials and rewrite paths.
 - [Bulbasaur](https://rendfall.github.io/pokemon-viewer-3d/#Bulbasaur)
 - [Rattata](https://rendfall.github.io/pokemon-viewer-3d/#Rattata)
 - [Snorlax](https://rendfall.github.io/pokemon-viewer-3d/#Snorlax)
+- [Slowpoke](https://rendfall.github.io/pokemon-viewer-3d/#Slowpoke)
 
 # Known issues
 
