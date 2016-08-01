@@ -16,6 +16,17 @@
         }
     };
 
+    function webglAvailable() {
+        try {
+            var canvas = root.document.createElement('canvas');
+            return !!
+                root.window.WebGLRenderingContext && 
+                (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+        } catch (e) { 
+            return false;
+        }
+    }
+
     function getObjectCenterPosition(obj) {
         var Box = new THREE.Box3().setFromObject(obj);
         return Box.center();
@@ -44,11 +55,12 @@
         },
 
         setupRenderer: function () {
-            var renderer = this.renderer = new THREE.WebGLRenderer();
+            var renderer = webglAvailable() ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
             renderer.setPixelRatio(getWindow().devicePixelRatio);
             renderer.setSize(getWindow().width, getWindow().height);
             renderer.setClearColor(new THREE.Color('hsl(0, 0%, 10%)'));
 
+            this.renderer = renderer;
             this.$container.appendChild(renderer.domElement);
         },
 
